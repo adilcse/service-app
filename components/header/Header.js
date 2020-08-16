@@ -45,8 +45,9 @@ const Header = (props) => {
 };
 const styles = StyleSheet.create({
   container: {
+    top: 0,
     flexDirection: "row",
-    height: 80,
+    maxHeight: 80,
     backgroundColor: colors.secondary,
     justifyContent: "center",
     alignItems: "center",

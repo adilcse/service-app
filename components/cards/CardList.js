@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import Card from "./Card";
 import { colors } from "../../constants/colors";
 import _ from "lodash";
@@ -21,8 +21,16 @@ const CardList = (props, style) => {
           <Card style={styles.card}>{data[1]}</Card>
         </View>
       );
+    } else if (data.length === 3) {
+      return (
+        <View style={styles.container} {...style}>
+          <Card style={styles.card}>{data[0]}</Card>
+          <Card style={styles.card}>{data[1]}</Card>
+          <Card style={styles.card}>{data[2]}</Card>
+        </View>
+      );
     } else {
-      const items = _.chunk(data, 2);
+      const items = _.chunk(data, 3);
       return (
         <View {...style}>
           {items.map((el, i) => (
@@ -33,13 +41,21 @@ const CardList = (props, style) => {
     }
   };
   if (_.isArray(props.element)) {
-    return (
-      <ScrollView>
-        <CardRow style={styles.row} data={props.element} />
-      </ScrollView>
-    );
+    if (props.element.length > 0)
+      return (
+        <ScrollView>
+          <CardRow style={styles.row} data={props.element} />
+        </ScrollView>
+      );
+    else {
+      return <Text> Sorry no items Found !! </Text>;
+    }
   } else {
-    return <Text>No Item Found</Text>;
+    return (
+      <View style={{ ...props.style, justifyContent: "center" }}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
   }
 };
 const styles = StyleSheet.create({
@@ -52,9 +68,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   card: {
-    width: "40%",
+    width: "30%",
     marginHorizontal: "1.5%",
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
   },
 });
 export default CardList;

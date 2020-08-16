@@ -1,10 +1,12 @@
 import React from "react";
-import {} from "react-native";
+import { View, Image } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../screens/HomeScreen";
 import ContactScreen from "../screens/ContactScreen";
-const Drawer = createDrawerNavigator();
+import CustomDrawer from "./CustomDrawer";
+
 const DrawerNavigation = (props) => {
+  const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} />
