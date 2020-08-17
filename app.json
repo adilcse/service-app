@@ -13,12 +13,26 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
-  }
+    },
+    "android": {
+      "package": "com.adil.project1"
+    },
+    "sdkVersion": "38.0.0",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "description": "",
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "welcome",
+  "name": "project1"
 }
